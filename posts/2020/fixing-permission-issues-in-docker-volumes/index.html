@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Fixing Permission Issues in Docker Volumes // Daniccan Veerapandian</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.89.4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Daniccan" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://daniccan.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fixing Permission Issues in Docker Volumes"/>
+<meta name="twitter:description" content="Background I recently worked on a project which would help automate the build and test of Kibana plugins using Docker. You can read more about the project here.
+The kibana-plugin-builder Docker container was initially developed to run as root and required a volume mount to access the source code of the plugin.
+The Problem There were no issues with the above setup until 7.1.x version of Kibana. However, in 7.2.x, there was a new constraint introduced that Kibana cannot run as root and required its own user."/>
+
+    <meta property="og:title" content="Fixing Permission Issues in Docker Volumes" />
+<meta property="og:description" content="Background I recently worked on a project which would help automate the build and test of Kibana plugins using Docker. You can read more about the project here.
+The kibana-plugin-builder Docker container was initially developed to run as root and required a volume mount to access the source code of the plugin.
+The Problem There were no issues with the above setup until 7.1.x version of Kibana. However, in 7.2.x, there was a new constraint introduced that Kibana cannot run as root and required its own user." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daniccan.github.io/posts/2020/fixing-permission-issues-in-docker-volumes/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-12T00:00:00+05:30" />
+<meta property="article:modified_time" content="2020-02-12T00:00:00+05:30" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://daniccan.github.io/"><img class="app-header-avatar" src="https://avatars2.githubusercontent.com/u/10397300?s=400&amp;u=8404a1b4db6304e12a87a9ce625ec004c4600171&amp;v=4" alt="Daniccan" /></a>
+      <h1>Daniccan Veerapandian</h1>
+      <p>Lead Engineer | CyberSecurity | Integrations | Big Data | Cloud | DevOps</p>
+      <div class="app-header-social">
+        
+          <a href="https://www.linkedin.com/in/daniccan-veerapandian-49921650/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/PassionDani" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+          <a href="https://github.com/daniccan" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://stackoverflow.com/users/2764789/daniccan" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Fixing Permission Issues in Docker Volumes</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Feb 12, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://daniccan.github.io/tags/docker/">Docker</a>
+              <a class="tag" href="https://daniccan.github.io/tags/linux/">Linux</a>
+              <a class="tag" href="https://daniccan.github.io/tags/container/">Container</a>
+              <a class="tag" href="https://daniccan.github.io/tags/volumes/">Volumes</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h2 id="background">Background</h2>
+<p>I recently worked on a project which would help automate the <a href="https://hub.docker.com/r/daniccan/kibana-plugin-builder">build</a> and <a href="https://hub.docker.com/r/daniccan/kibana-plugin-tester">test</a> of Kibana plugins using Docker. You can read more about the project <a href="../automated-kibana-plugin-builds-and-tests">here</a>.</p>
+<p>The <a href="https://hub.docker.com/r/daniccan/kibana-plugin-builder">kibana-plugin-builder</a> Docker container was initially developed to run as <code>root</code> and required a volume mount to access the source code of the plugin.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>There were no issues with the above setup until 7.1.x version of Kibana. However, in 7.2.x, there was a new constraint introduced that Kibana cannot run as <code>root</code> and required its own user.</p>
+<p>Here, I did what anyone else would do. I added the steps to create a new user called <code>ubuntu</code> in the <code>Dockerfile</code>, so that the container will use the <code>ubuntu</code> user instead of <code>root</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">RUN</span> useradd -ms /bin/bash ubuntu<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">USER</span><span style="color:#e6db74"> ubuntu</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /home/ubuntu</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>That resolved the constraint and Kibana was able to run successfully. But, this introduced a new problem. The <code>ubuntu</code> user did not have the required permissions to access the Docker volume, as the volume was mounted from my host machine which had a separate user.</p>
+<h2 id="the-solution">The Solution</h2>
+<h3 id="reusing-the-uid-of-the-local-user">Reusing the UID of the Local User</h3>
+<p>Every user in a system has a UID assigned to it (e.g: <code>root</code> has a UID of 0). When checking for permissions, systems care about the UID and not the username. Luckily, Docker provides a way to dynamically set a UID to the user in the container. You can set a <code>-u</code> flag in the <code>docker run</code> command to pass your system user&rsquo;s UID to the container.</p>
+<p><strong>Without -u Flag</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker run -it --rm bash:4.4
+bash-4.4$ id
+uid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span>,1<span style="color:#f92672">(</span>bin<span style="color:#f92672">)</span>,2<span style="color:#f92672">(</span>daemon<span style="color:#f92672">)</span>,3<span style="color:#f92672">(</span>sys<span style="color:#f92672">)</span>,4<span style="color:#f92672">(</span>adm<span style="color:#f92672">)</span>,6<span style="color:#f92672">(</span>disk<span style="color:#f92672">)</span>,10<span style="color:#f92672">(</span>wheel<span style="color:#f92672">)</span>,11<span style="color:#f92672">(</span>floppy<span style="color:#f92672">)</span>,20<span style="color:#f92672">(</span>dialout<span style="color:#f92672">)</span>,26<span style="color:#f92672">(</span>tape<span style="color:#f92672">)</span>,27<span style="color:#f92672">(</span>video<span style="color:#f92672">)</span>
+</code></pre></div><p><strong>With -u Flag</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker run -it -u <span style="color:#e6db74">`</span>id -u $USER<span style="color:#e6db74">`</span> --rm bash:4.4
+bash-4.4$ id
+uid<span style="color:#f92672">=</span><span style="color:#ae81ff">501</span> gid<span style="color:#f92672">=</span>0<span style="color:#f92672">(</span>root<span style="color:#f92672">)</span>
+</code></pre></div><p>But, the above solution was not enough, as the group was still pointing to <code>root</code> and there was no user with UID of 501 in the container&rsquo;s list of users (<code>cat /etc/passwd</code>).</p>
+<h3 id="building-the-base-docker-image">Building the Base Docker Image</h3>
+<p>The next step was to create and use a new user with the UID passed via the <code>-u</code> flag instead of just reusing the UID, so that the new user is present in a non-root group and is also available in the <code>/etc/passwd</code> file in the container.</p>
+<p>To do this, I needed a base docker image which would do the following:</p>
+<ol>
+<li>Create a new user with the given UID.</li>
+<li>Create a new user with a random UID, if the UID is not given.</li>
+<li>Assign the user to a non-root group.</li>
+<li>Create a home directory for the user.</li>
+<li>Execute any given process as the new user.</li>
+</ol>
+<p>To <code>execute any given process as the new user</code>, the container has to switch to the new user instead of <code>root</code>. I used <a href="https://github.com/tianon/gosu">gosu</a> for this. <a href="https://github.com/tianon/gosu">gosu</a> is a simple tool written in <a href="https://golang.org/">Go</a> to switch between users and to execute processes as the given user.</p>
+<p>To make this base image re-usable, I created a project called <a href="https://github.com/daniccan/docker-gosu">docker-gosu</a>, which is a set of linux base images with <a href="https://github.com/tianon/gosu">gosu</a> support to run as a non-root user.</p>
+<h3 id="using-the-base-docker-image">Using the Base Docker Image</h3>
+<p>Now, all I had to do in terms of development was change the base image in the <a href="https://github.com/daniccan/kibana-plugin-builder/blob/master/Dockerfile">kibana-plugin-builder Dockerfile</a> to the <a href="https://hub.docker.com/r/daniccan/ubuntu-gosu">ubuntu-gosu</a> base image that I built.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> daniccan/ubuntu-gosu:18.04</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="running-the-container">Running the Container</h3>
+<p>The following command now runs the Docker container as a non-root user, <code>ubuntu</code>, who has the same UID as the user on my host system and is now able to access the volume mount with no issues.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">docker run -it -e LOCAL_USER_ID<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>id -u $USER<span style="color:#e6db74">`</span> -v /path/in/host:/path/in/container --rm daniccan/kibana-plugin-builder
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>If you are creating your Docker image from base images such as <a href="https://hub.docker.com/_/ubuntu">Ubuntu</a>, <a href="https://hub.docker.com/_/centos">CentOS</a> or any other Linux distro and if you are not creating a user in your <code>Dockerfile</code>, it is highly likely that your container will run its processes as <code>root</code>. This is <a href="https://blog.trendmicro.com/trendlabs-security-intelligence/why-running-a-privileged-container-in-docker-is-a-bad-idea/">not recommended</a> for a number of reasons. Additionally, if you are using volumes in your container, then a normal user creation will not suffice as seen above. Ensure to create your image from base images such as <a href="https://github.com/daniccan/docker-gosu">docker-gosu</a> with support to create users with given UID and to run processes as a non-root user.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

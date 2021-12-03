@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>How I Built a Multi-Tenant Node App // Daniccan Veerapandian</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.89.4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Daniccan" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://daniccan.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How I Built a Multi-Tenant Node App"/>
+<meta name="twitter:description" content="Due to the COVID-19 pandemic, countries across the globe started enforcing lockdowns, where people stayed at home, to stay safe and flatten the curve. People were using this time to laze around, binge watch tv and play games, spend time with their families, learn and try new things and so on. I did most of that too. As a software developer, I also tried out a Proof of Concept by building a multi-tenant NodeJS app."/>
+
+    <meta property="og:title" content="How I Built a Multi-Tenant Node App" />
+<meta property="og:description" content="Due to the COVID-19 pandemic, countries across the globe started enforcing lockdowns, where people stayed at home, to stay safe and flatten the curve. People were using this time to laze around, binge watch tv and play games, spend time with their families, learn and try new things and so on. I did most of that too. As a software developer, I also tried out a Proof of Concept by building a multi-tenant NodeJS app." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daniccan.github.io/posts/2020/how-i-built-a-multi-tenant-node-app/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-04-08T00:00:00+05:30" />
+<meta property="article:modified_time" content="2020-04-08T00:00:00+05:30" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://daniccan.github.io/"><img class="app-header-avatar" src="https://avatars2.githubusercontent.com/u/10397300?s=400&amp;u=8404a1b4db6304e12a87a9ce625ec004c4600171&amp;v=4" alt="Daniccan" /></a>
+      <h1>Daniccan Veerapandian</h1>
+      <p>Lead Engineer | CyberSecurity | Integrations | Big Data | Cloud | DevOps</p>
+      <div class="app-header-social">
+        
+          <a href="https://www.linkedin.com/in/daniccan-veerapandian-49921650/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/PassionDani" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+          <a href="https://github.com/daniccan" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://stackoverflow.com/users/2764789/daniccan" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">How I Built a Multi-Tenant Node App</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 8, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://daniccan.github.io/tags/multitenant/">Multitenant</a>
+              <a class="tag" href="https://daniccan.github.io/tags/nodejs/">NodeJS</a>
+              <a class="tag" href="https://daniccan.github.io/tags/mysql/">MySQL</a>
+              <a class="tag" href="https://daniccan.github.io/tags/sequelize/">Sequelize</a>
+              <a class="tag" href="https://daniccan.github.io/tags/jwt/">JWT</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>Due to the <a href="https://en.wikipedia.org/wiki/Coronavirus_disease_2019">COVID-19</a> pandemic, countries across the globe started enforcing lockdowns, where people stayed at home, to stay safe and <a href="https://en.wikipedia.org/wiki/Flatten_the_curve">flatten the curve</a>. People were using this time to laze around, binge watch tv and play games, spend time with their families, learn and try new things and so on. I did most of that too. As a software developer, I also tried out a <a href="https://en.wikipedia.org/wiki/Proof_of_concept">Proof of Concept</a> by building a <a href="https://blog.lftechnology.com/designing-a-secure-and-scalable-multi-tenant-application-on-node-js-15ae13dda778">multi-tenant NodeJS app</a>.</p>
+<p>This is not a step-by-step technical post on how to build the app, but more about my experience in building the app.</p>
+<h2 id="what-did-i-want-to-build">What did I want to build?</h2>
+<p>The one line requirement was to build a <a href="https://en.wikipedia.org/wiki/Multitenancy">multi-tenant</a> <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful web service</a> app on top of <a href="https://nodejs.org/en/">NodeJS</a>. In detail, the app had to saftisfy the following additional criterias.</p>
+<h3 id="basics">Basics</h3>
+<ul>
+<li>A RESTful web service built using NodeJS</li>
+<li>Data to be persisted in a RDBMS database (<a href="https://www.mysql.com/">MySQL</a> / <a href="https://www.postgresql.org/">PostgreSQL</a> / <a href="https://sqlite.org/index.html">SQLite</a>)</li>
+<li>Basic CRUD (Create-Read-Update-Delete) operations on resources such as <code>Users</code>, <code>Organizations</code></li>
+</ul>
+<h3 id="multi-tenancy">Multi-tenancy</h3>
+<ul>
+<li>A <code>Signup API</code> used to create a new <code>Account</code></li>
+<li>Every new <code>Account</code> creation in turn creates a new Tenant DB / Schema</li>
+<li>All API requests to perform operations only in its respective Tenant DB</li>
+</ul>
+<h3 id="security">Security</h3>
+<ul>
+<li>A <code>Login API</code> to authenticate a <code>User</code></li>
+<li>A token-based authentication layer on top of all CRUD API requests</li>
+</ul>
+<h2 id="how-did-i-build-it">How did I build it?</h2>
+<p>This was a new experience for me. Before this, I haven&rsquo;t worked on multi-tenancy or multiple databases support in NodeJS. So, the concept of the whole app was initally overwhelming for me. But, the first step to completing any big task is to break it up into smaller manageable tasks and that is exactly what I did.</p>
+<h3 id="setting-up-the-development-environment">Setting up the Development Environment</h3>
+<p>I setup <a href="https://nodejs.org/en/download/package-manager/#nvm">NodeJS using NVM</a> and <a href="https://dev.mysql.com/doc/refman/8.0/en/installing.html">MySQL</a> in my laptop for development. To code, I used the <a href="https://code.visualstudio.com/">Visual Studio Code</a> editor, as it supports multiple themes and has a lot of plugins for different programming and scripting languages.</p>
+<h3 id="starting-with-the-boilerplate">Starting with the Boilerplate</h3>
+<p>Setting up the boilerplate code was the easiest, as I just had to copy-paste the base code of a RESTful web service app. It included,</p>
+<ul>
+<li>A HTTP server using <a href="https://www.npmjs.com/package/express">ExpressJS</a></li>
+<li>A <a href="https://www.npmjs.com/package/body-parser">Body Parser</a> to parse the incoming HTTP API requests</li>
+<li>A Logger to write application logs to file using <a href="https://www.npmjs.com/package/winston">Winston</a> and <a href="https://www.npmjs.com/package/morgan">Morgan</a></li>
+<li>A monitoring tool to automatically restart the app when new changes were detected using <a href="https://www.npmjs.com/package/nodemon">Nodemon</a></li>
+<li>Routes and empty methods for the basic CRUD operations to be implemented</li>
+</ul>
+<h3 id="defining-schema-via-models--migrations">Defining Schema via Models &amp; Migrations</h3>
+<p>The next step was to define and implement the data model in such a way that it supports any RDBMS mentioned in the requirements. As this was just a POC, I went with a set of basic fields for the tables and created a <a href="https://sequelize.org/master/manual/assocs.html#one-to-many-relationships">one-to-many</a> relationship between <code>Organizations</code> and <code>Users</code>.</p>
+<p>However, I needed a way to implement this data model in the database. Also, I needed this to be automated, as these tables will be re-created for every new tenant. So, instead of creating the tables manually, I went with <a href="https://www.npmjs.com/package/sequelize">Sequelize</a> and <a href="https://www.npmjs.com/package/sequelize-cli">Sequelize CLI</a>, an ORM framework. This helped me in three ways.</p>
+<ul>
+<li>To create and update databases, tables, and relationships using <a href="https://sequelize.org/master/manual/migrations.html">Migrations</a>. Execution of the <code>Migrations</code> can be automated programmatically too.</li>
+<li>To map the DB Tables with Objects in the app using <a href="https://sequelize.org/master/manual/model-basics.html">Models</a>. This way, I did not have to write any SQL queries to perform operations on the DB. I could just call the methods such as <code>create</code>, <code>findAll</code>, <code>update</code>, <code>destroy</code> etc., on the <code>Models</code> and its corresponding SQL queries would be executed on the DB.</li>
+<li>To support any of the RDBMS databases easily by changing the <a href="https://sequelize.org/master/manual/dialect-specific-things.html">dialect</a> configuration.</li>
+</ul>
+<h3 id="crud-with-rest-apis">CRUD with REST APIs</h3>
+<p>This was my comfortable part of the app where I had to build APIs using <code>GET</code>, <code>POST</code>, <code>PUT</code> and <code>DELETE</code> HTTP methods to perform the CRUD operations on <code>Users</code> and <code>Organizations</code>.</p>
+<p>All APIs were configured using <a href="https://expressjs.com/en/guide/routing.html">routing</a> in the app and the interactions with the database were peformed using <a href="https://sequelize.org/v5/manual/querying.html">Sequelize</a>.</p>
+<h3 id="require-login-for-authentication">Require Login for Authentication</h3>
+<p>Now, all of the APIs were open. Anyone could access the APIs directly. This was not secure. All API requests needed to be authenticated to ensure that the <code>User</code> is valid to perform any operations. The <code>Users</code> table had an <code>email</code> and <code>password</code> field which could be used for validation. I used <a href="https://www.npmjs.com/package/passport">Passport</a> to validate the <code>email</code> and <code>password</code> sent in the <code>Login API</code> request.</p>
+<p>However, if I am going to add an authentication layer on top of every CRUD API request, I cannot validate the <code>User</code> by checking the database everytime. This would be inefficient. This is where <a href="https://jwt.io/">JWT</a>, a token-based authentication helps. A encoded <code>JSON token</code> is returned on successful login using the <code>Login API</code>. This <code>JSON token</code> will then be sent in the <code>Authorization</code> header of all other API requests, where it is decoded and validated. A <a href="https://www.npmjs.com/package/passport-jwt">Passport JWT</a> strategy is available for this integration.</p>
+<h3 id="signup-to-create-a-new-tenant">Signup to create a new Tenant</h3>
+<p>It was easy to create a <code>Signup API</code> which would accept basic information about the <code>Account</code> and the <code>User</code> who signs up. The <code>Account</code> information would be persisted in the database in the <code>Accounts</code> table.</p>
+<p>The next part was tricky. The <code>User</code> information should not be persisted in the main database. It had to be written to the tenant database. To do that, I would need to create a tenant database along with all the tables that it needs. This was done using <a href="https://sequelize.org/master/manual/migrations.html#running-migrations">Sequelize CLI and Migrations</a>. Programmatically, I created a tenant database based on the <code>ID</code> of the signup entry in the <code>Accounts</code> table and then ran the migrations on top of the tenant database. The <code>User</code> information can now be written to the tenant database. But, I still had to get the DB connection for the tenant database to do that.</p>
+<h3 id="pool-of-tenant-connections">Pool of Tenant Connections</h3>
+<p>I created a simple key-value pair object to create, store and fetch DB connections. The tenant name would be the key and the value would be the DB connection. This would act as a <a href="https://en.wikipedia.org/wiki/Connection_pool">connection pool</a>. It is similar to how <a href="https://en.wikipedia.org/wiki/Cache_(computing)">caching</a> works. When a new tenant database is created, a connection for that database is created and stored in the connection pool. The connection can then be fetched from the pool by providing the tenant name.</p>
+<h3 id="multi-tenancy-in-the-api-requests">Multi-tenancy in the API Requests</h3>
+<p>What about the connections for the tenant databases that are already present? Every time a new API request comes in, a check for the connection of the requested tenant is made in the connection pool. If it is available, the connection is fetched and the operation is performed on the tenant database. If it is not available, a new connection for the tenant is created and stored in the connection pool and is then used for the database operation. Since, the connection would now be present in the connection pool, all subsequent requests of the tenant can fetch the connection directly from the pool.</p>
+<p>But, wait. How does the app know which tenant is requested by the API? The most common method is to use <a href="https://en.wikipedia.org/wiki/Subdomain">subdomains</a>, like <code>tenant1.example.com</code>, <code>tenant2.example.com</code>, etc. However, this is just a POC and also I am running the application on <code>localhost</code>. So, I went with the easier approach of sending a custom header called <code>X-TENANT-ID</code> in the API request, which will be used to identify the tenant.</p>
+<h2 id="what-else-could-i-have-done">What else could I have done?</h2>
+<p>Some of the additional requirements that could have been there are:</p>
+<ul>
+<li>Implement <code>Roles</code> and <code>Policies</code> to setup <a href="https://en.wikipedia.org/wiki/Role-based_access_control">RBAC</a></li>
+<li>Use sub-domains instead of the custom header to identify the tenant</li>
+<li>Create a multi-tenant front-end application to interact with this REST app</li>
+<li>Containerize the app using <code>Docker</code></li>
+<li>and so on&hellip;</li>
+</ul>
+<p>Like the above, there is a lot more that I could have added to this POC. Maybe, someday I will.</p>
+<h2 id="what-did-i-learn-from-this">What did I learn from this?</h2>
+<p><a href="https://en.wikipedia.org/wiki/Learning-by-doing">Learning by doing</a> is the best approach to learn anything. By building this app, I learnt a lot of things conceptually and technically. I learnt about different approaches to the multi-tenancy architecture (I might even write a blog post on that one day). I learnt to use some common NPM libraries like <code>Sequelize</code>, <code>Passport</code>, etc. Most of all, I learnt that if you know how to break a huge task into smaller pieces, you will surely be able to complete it.</p>
+<p>You can find the code for the app in the <a href="https://github.com/daniccan/multi-tenant-node-app">daniccan/multi-tenant-node-app</a> GitHub repository.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

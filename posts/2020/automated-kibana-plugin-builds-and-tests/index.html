@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Automated Kibana Plugin Builds and Tests // Daniccan Veerapandian</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.89.4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Daniccan" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://daniccan.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Automated Kibana Plugin Builds and Tests"/>
+<meta name="twitter:description" content="Elasticsearch and Kibana Elasticsearch is a distributed search and analytics engine based on the Lucene library. It provides fast and flexible text-based searches on structured and unstructured data. Some of its major use cases include Logging &amp; Monitoring, Big Data Analytics, Security Analytics, etc.
+Kibana is the UI or presentation layer for Elasticsearch. It provides powerful visualizations for dashboards and reports along with the ability to run searches on Elasticsearch via REST calls."/>
+
+    <meta property="og:title" content="Automated Kibana Plugin Builds and Tests" />
+<meta property="og:description" content="Elasticsearch and Kibana Elasticsearch is a distributed search and analytics engine based on the Lucene library. It provides fast and flexible text-based searches on structured and unstructured data. Some of its major use cases include Logging &amp; Monitoring, Big Data Analytics, Security Analytics, etc.
+Kibana is the UI or presentation layer for Elasticsearch. It provides powerful visualizations for dashboards and reports along with the ability to run searches on Elasticsearch via REST calls." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daniccan.github.io/posts/2020/automated-kibana-plugin-builds-and-tests/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-01-29T00:00:00+05:30" />
+<meta property="article:modified_time" content="2020-01-29T00:00:00+05:30" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://daniccan.github.io/"><img class="app-header-avatar" src="https://avatars2.githubusercontent.com/u/10397300?s=400&amp;u=8404a1b4db6304e12a87a9ce625ec004c4600171&amp;v=4" alt="Daniccan" /></a>
+      <h1>Daniccan Veerapandian</h1>
+      <p>Lead Engineer | CyberSecurity | Integrations | Big Data | Cloud | DevOps</p>
+      <div class="app-header-social">
+        
+          <a href="https://www.linkedin.com/in/daniccan-veerapandian-49921650/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/PassionDani" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+          <a href="https://github.com/daniccan" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://stackoverflow.com/users/2764789/daniccan" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Automated Kibana Plugin Builds and Tests</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jan 29, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          4 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://daniccan.github.io/tags/elasticsearch/">Elasticsearch</a>
+              <a class="tag" href="https://daniccan.github.io/tags/kibana/">Kibana</a>
+              <a class="tag" href="https://daniccan.github.io/tags/plugin/">Plugin</a>
+              <a class="tag" href="https://daniccan.github.io/tags/docker/">Docker</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h2 id="elasticsearch-and-kibana">Elasticsearch and Kibana</h2>
+<p><a href="https://www.elastic.co/elasticsearch/">Elasticsearch</a> is a distributed search and analytics engine based on the <a href="https://lucene.apache.org/">Lucene</a> library. It provides fast and flexible text-based searches on structured and unstructured data. Some of its major use cases include Logging &amp; Monitoring, Big Data Analytics, Security Analytics, etc.</p>
+<p><a href="https://www.elastic.co/kibana">Kibana</a> is the UI or presentation layer for Elasticsearch. It provides powerful visualizations for dashboards and reports along with the ability to run searches on Elasticsearch via REST calls.</p>
+<p>Elasticsearch and Kibana are tightly-coupled during every release in such a way that both versions should match for them to run alongside each other. In simpler words, you cannot use one version of Kibana with a different version of Elasticsearch.</p>
+<p>The current version of <a href="https://www.elastic.co/blog/elasticsearch-7-5-0-released">Elasticsearch</a> and <a href="https://www.elastic.co/blog/kibana-7-5-0-released">Kibana</a> at the time of writing this post is 7.5.0.</p>
+<h2 id="kibana-plugins">Kibana Plugins</h2>
+<p>Along with the set of default features that Kibana has, it also supports plugins which expands the functionalities of Kibana.</p>
+<p>The <a href="https://www.elastic.co/guide/en/kibana/7.x/install-plugin.html">installation</a> of Kibana plugins is straight-forward with the use of a simple command.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">bin/kibana-plugin install &lt;package name or URL&gt;
+</code></pre></div><p><strong>Note:</strong> In 7.5.x, it is still necessary to restart the Kibana service for the plugin to be loaded. The Elastic team is working on a <a href="https://github.com/elastic/kibana/issues/52756">feature</a> to load dynamic configuration without restarts which should be available in the future releases.</p>
+<p>Kibana supports the installation of two types of plugins.</p>
+<ul>
+<li>
+<p><em>Official Kibana Plugins</em> are developed and supported by <a href="https://www.elastic.co/">Elastic</a>. These plugins can be installed by mentioning the package name alone. Some of these plugins are supported only for premium subscriptions and are not available in Open Source.</p>
+</li>
+<li>
+<p><em>Custom Kibana Plugins</em> are developed by either a business or the Open Source community. These plugins are usually installed by specifying the URL or file path of the package.</p>
+</li>
+</ul>
+<p><a href="https://chunkbytes.com/2019/05/how-to-create-a-plugin-for-kibana/">Creating a Kibana Plugin</a> is simple if you are familiar with developing applications using <a href="https://reactjs.org/">React</a> and <a href="https://nodejs.org/en/">Node.js</a>.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>Similar to how Elasticsearch and Kibana work together, the plugins are also tightly-coupled with Kibana. Every release of Kibana requires a new build and release of the plugin.</p>
+<p>Let us assume that you have developed a plugin for Kibana version 7.0.0. There have been around 10+ releases after that till date. For every release of Kibana, you will have to release the plugin mapped to that Kibana version.</p>
+<p>What happens now, if you make a change to your plugin and want to check if it still works on all Kibana versions? You will have to go through the process of ensuring the versions of node.js, Elasticsearch, and Kibana in your system, bootstrapping Kibana, building the plugin, installing and testing it out. This has to be done for every version.</p>
+<p>Imagine having to download and install different versions of node.js, Elasticsearch and Kibana and switching between them for each build and test. This becomes a time-consuming process which decreases productivity and requires continuous manual effort.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>What if you could build the plugin, install it, all in just one command, without worrying about installing node.js, Elasticsearch and Kibana or bootstrapping and building with the right version of Kibana? Then the only manual effort involved would be to login to Kibana UI and test if the plugin works.</p>
+<p>This is the idea that led to the development of two docker images.</p>
+<ul>
+<li><a href="https://hub.docker.com/r/daniccan/kibana-plugin-builder">Kibana Plugin Builder</a></li>
+<li><a href="https://hub.docker.com/r/daniccan/kibana-plugin-tester">Kibana Plugin Tester</a></li>
+</ul>
+<h3 id="kibana-plugin-builder">Kibana Plugin Builder</h3>
+<p>The Kibana Plugin Builder can be used to build the plugin for any given version of Kibana. A simple <code>docker run</code> command with <code>KIBANA_VERSION</code> and <code>PLUGIN_VERSION</code> set as environment variables along with the source code of the plugin mounted onto the image via docker volumes is enough to build the plugin and place the package in the <code>build</code> directory of the plugin source.</p>
+<p>This docker container handles the cloning of Kibana source from <a href="https://github.com/elastic/kibana">GitHub</a>, installing node.js, bootstrapping Kibana and building the plugin.</p>
+<p>The source code for the image is available in <a href="https://github.com/daniccan/kibana-plugin-builder">GitHub</a> and the docker image is available in <a href="https://hub.docker.com/r/daniccan/kibana-plugin-builder">DockerHub</a>.</p>
+<h3 id="kibana-plugin-tester">Kibana Plugin Tester</h3>
+<p>The Kibana Plugin Tester can be used to install and test the plugin for any given version of Kibana. This too is straight-forward with a <code>docker run</code> command expecting the <code>KIBANA_VERSION</code> and <code>PLUGIN_URL</code> (if the package is available via URL) or <code>PLUGIN_FILE_NAME</code> (if the package is available via file path) as environment variables. If the plugin package is available in a file path, it has to be mounted using docker volumes.</p>
+<p>This docker container handles the installation and loading of Elasticsearch, Kibana and the plugin itself. Once the container is up and running, you can visit the Kibana UI in your browser to test the plugin.</p>
+<p>The source code for the image is available in <a href="https://github.com/daniccan/kibana-plugin-tester">GitHub</a> and the docker image is available in <a href="https://hub.docker.com/r/daniccan/kibana-plugin-tester">DockerHub</a>.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

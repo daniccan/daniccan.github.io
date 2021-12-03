@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Daniccan Veerapandian</title>
+    <link>https://daniccan.github.io/tags/docker/</link>
+    <description>Recent content in Docker on Daniccan Veerapandian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://daniccan.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fixing Permission Issues in Docker Volumes</title>
+      <link>https://daniccan.github.io/posts/2020/fixing-permission-issues-in-docker-volumes/</link>
+      <pubDate>Wed, 12 Feb 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/fixing-permission-issues-in-docker-volumes/</guid>
+      <description>Background I recently worked on a project which would help automate the build and test of Kibana plugins using Docker. You can read more about the project here.
+The kibana-plugin-builder Docker container was initially developed to run as root and required a volume mount to access the source code of the plugin.
+The Problem There were no issues with the above setup until 7.1.x version of Kibana. However, in 7.2.x, there was a new constraint introduced that Kibana cannot run as root and required its own user.</description>
+    </item>
+    
+    <item>
+      <title>Automated Kibana Plugin Builds and Tests</title>
+      <link>https://daniccan.github.io/posts/2020/automated-kibana-plugin-builds-and-tests/</link>
+      <pubDate>Wed, 29 Jan 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/automated-kibana-plugin-builds-and-tests/</guid>
+      <description>Elasticsearch and Kibana Elasticsearch is a distributed search and analytics engine based on the Lucene library. It provides fast and flexible text-based searches on structured and unstructured data. Some of its major use cases include Logging &amp;amp; Monitoring, Big Data Analytics, Security Analytics, etc.
+Kibana is the UI or presentation layer for Elasticsearch. It provides powerful visualizations for dashboards and reports along with the ability to run searches on Elasticsearch via REST calls.</description>
+    </item>
+    
+  </channel>
+</rss>

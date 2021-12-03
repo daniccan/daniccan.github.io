@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Container on Daniccan Veerapandian</title>
+    <link>https://daniccan.github.io/tags/container/</link>
+    <description>Recent content in Container on Daniccan Veerapandian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://daniccan.github.io/tags/container/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fixing Permission Issues in Docker Volumes</title>
+      <link>https://daniccan.github.io/posts/2020/fixing-permission-issues-in-docker-volumes/</link>
+      <pubDate>Wed, 12 Feb 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/fixing-permission-issues-in-docker-volumes/</guid>
+      <description>Background I recently worked on a project which would help automate the build and test of Kibana plugins using Docker. You can read more about the project here.
+The kibana-plugin-builder Docker container was initially developed to run as root and required a volume mount to access the source code of the plugin.
+The Problem There were no issues with the above setup until 7.1.x version of Kibana. However, in 7.2.x, there was a new constraint introduced that Kibana cannot run as root and required its own user.</description>
+    </item>
+    
+  </channel>
+</rss>

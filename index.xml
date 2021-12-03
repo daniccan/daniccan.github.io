@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Daniccan Veerapandian</title>
+    <link>https://daniccan.github.io/</link>
+    <description>Recent content on Daniccan Veerapandian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Apr 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://daniccan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Big Data Architectures: An Introduction to Big Data</title>
+      <link>https://daniccan.github.io/posts/2020/an-introduction-to-big-data/</link>
+      <pubDate>Wed, 22 Apr 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/an-introduction-to-big-data/</guid>
+      <description>Posts in the Big Data Architectures Series  An Introduction to Big Data  What is Big Data? Big Data is defined by Wikipedia as, &amp;ldquo;Data that usually includes data sets with sizes beyond the ability of commonly used software tools to capture, curate, manage, and process data within a tolerable elapsed time.&amp;rdquo; In simpler terms, huge amounts of data that cannot be handled using a traditional database system is called as big data.</description>
+    </item>
+    
+    <item>
+      <title>How I Built a Multi-Tenant Node App</title>
+      <link>https://daniccan.github.io/posts/2020/how-i-built-a-multi-tenant-node-app/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/how-i-built-a-multi-tenant-node-app/</guid>
+      <description>Due to the COVID-19 pandemic, countries across the globe started enforcing lockdowns, where people stayed at home, to stay safe and flatten the curve. People were using this time to laze around, binge watch tv and play games, spend time with their families, learn and try new things and so on. I did most of that too. As a software developer, I also tried out a Proof of Concept by building a multi-tenant NodeJS app.</description>
+    </item>
+    
+    <item>
+      <title>Fixing Permission Issues in Docker Volumes</title>
+      <link>https://daniccan.github.io/posts/2020/fixing-permission-issues-in-docker-volumes/</link>
+      <pubDate>Wed, 12 Feb 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/fixing-permission-issues-in-docker-volumes/</guid>
+      <description>Background I recently worked on a project which would help automate the build and test of Kibana plugins using Docker. You can read more about the project here.
+The kibana-plugin-builder Docker container was initially developed to run as root and required a volume mount to access the source code of the plugin.
+The Problem There were no issues with the above setup until 7.1.x version of Kibana. However, in 7.2.x, there was a new constraint introduced that Kibana cannot run as root and required its own user.</description>
+    </item>
+    
+    <item>
+      <title>Automated Kibana Plugin Builds and Tests</title>
+      <link>https://daniccan.github.io/posts/2020/automated-kibana-plugin-builds-and-tests/</link>
+      <pubDate>Wed, 29 Jan 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/automated-kibana-plugin-builds-and-tests/</guid>
+      <description>Elasticsearch and Kibana Elasticsearch is a distributed search and analytics engine based on the Lucene library. It provides fast and flexible text-based searches on structured and unstructured data. Some of its major use cases include Logging &amp;amp; Monitoring, Big Data Analytics, Security Analytics, etc.
+Kibana is the UI or presentation layer for Elasticsearch. It provides powerful visualizations for dashboards and reports along with the ability to run searches on Elasticsearch via REST calls.</description>
+    </item>
+    
+    <item>
+      <title>Dictionary in Excel VBA</title>
+      <link>https://daniccan.github.io/posts/2020/dictionary-in-excel-vba/</link>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/dictionary-in-excel-vba/</guid>
+      <description>I recently worked on a project which involved creating a macro in Microsoft Excel. Macros can be easily created without any programming knowledge by recording a macro. However, recording macros do not help with advanced or customized use cases. VBA is used in such cases where you can code the macro to suit your requirement.
+VBA and its Key-Value Pair Data Structure Just like any other programming language, VBA has its own syntax of variable declarations, data types, conditional and looping statements etc.</description>
+    </item>
+    
+    <item>
+      <title>My Goals for 2020 as a Software Developer</title>
+      <link>https://daniccan.github.io/posts/2020/my-goals-for-2020-as-a-software-developer/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/my-goals-for-2020-as-a-software-developer/</guid>
+      <description>🎉 🎊 🎉 🎊 Happy New Year 2020 🎉 🎊 🎉 🎊
+Preface It has been more than a decade since I started programming in college, back in 2009. 4 years later, I chose Software Developer as my career path. In the past 7 years of my software development career, I have learnt a lot and worked on multiple technologies and projects. But, there were a few things in my to-do list, which I could never get to, due to the usual excuses everyone makes such as being too busy or having no time.</description>
+    </item>
+    
+  </channel>
+</rss>

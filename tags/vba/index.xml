@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VBA on Daniccan Veerapandian</title>
+    <link>https://daniccan.github.io/tags/vba/</link>
+    <description>Recent content in VBA on Daniccan Veerapandian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Jan 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://daniccan.github.io/tags/vba/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dictionary in Excel VBA</title>
+      <link>https://daniccan.github.io/posts/2020/dictionary-in-excel-vba/</link>
+      <pubDate>Wed, 15 Jan 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/dictionary-in-excel-vba/</guid>
+      <description>I recently worked on a project which involved creating a macro in Microsoft Excel. Macros can be easily created without any programming knowledge by recording a macro. However, recording macros do not help with advanced or customized use cases. VBA is used in such cases where you can code the macro to suit your requirement.
+VBA and its Key-Value Pair Data Structure Just like any other programming language, VBA has its own syntax of variable declarations, data types, conditional and looping statements etc.</description>
+    </item>
+    
+  </channel>
+</rss>

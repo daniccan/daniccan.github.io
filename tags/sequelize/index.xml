@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sequelize on Daniccan Veerapandian</title>
+    <link>https://daniccan.github.io/tags/sequelize/</link>
+    <description>Recent content in Sequelize on Daniccan Veerapandian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Apr 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://daniccan.github.io/tags/sequelize/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How I Built a Multi-Tenant Node App</title>
+      <link>https://daniccan.github.io/posts/2020/how-i-built-a-multi-tenant-node-app/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/how-i-built-a-multi-tenant-node-app/</guid>
+      <description>Due to the COVID-19 pandemic, countries across the globe started enforcing lockdowns, where people stayed at home, to stay safe and flatten the curve. People were using this time to laze around, binge watch tv and play games, spend time with their families, learn and try new things and so on. I did most of that too. As a software developer, I also tried out a Proof of Concept by building a multi-tenant NodeJS app.</description>
+    </item>
+    
+  </channel>
+</rss>

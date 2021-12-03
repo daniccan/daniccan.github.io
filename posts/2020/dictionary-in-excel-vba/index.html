@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Dictionary in Excel VBA // Daniccan Veerapandian</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.89.4" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Daniccan" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://daniccan.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dictionary in Excel VBA"/>
+<meta name="twitter:description" content="I recently worked on a project which involved creating a macro in Microsoft Excel. Macros can be easily created without any programming knowledge by recording a macro. However, recording macros do not help with advanced or customized use cases. VBA is used in such cases where you can code the macro to suit your requirement.
+VBA and its Key-Value Pair Data Structure Just like any other programming language, VBA has its own syntax of variable declarations, data types, conditional and looping statements etc."/>
+
+    <meta property="og:title" content="Dictionary in Excel VBA" />
+<meta property="og:description" content="I recently worked on a project which involved creating a macro in Microsoft Excel. Macros can be easily created without any programming knowledge by recording a macro. However, recording macros do not help with advanced or customized use cases. VBA is used in such cases where you can code the macro to suit your requirement.
+VBA and its Key-Value Pair Data Structure Just like any other programming language, VBA has its own syntax of variable declarations, data types, conditional and looping statements etc." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://daniccan.github.io/posts/2020/dictionary-in-excel-vba/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-01-15T00:00:00+05:30" />
+<meta property="article:modified_time" content="2020-01-15T00:00:00+05:30" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://daniccan.github.io/"><img class="app-header-avatar" src="https://avatars2.githubusercontent.com/u/10397300?s=400&amp;u=8404a1b4db6304e12a87a9ce625ec004c4600171&amp;v=4" alt="Daniccan" /></a>
+      <h1>Daniccan Veerapandian</h1>
+      <p>Lead Engineer | CyberSecurity | Integrations | Big Data | Cloud | DevOps</p>
+      <div class="app-header-social">
+        
+          <a href="https://www.linkedin.com/in/daniccan-veerapandian-49921650/" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+          </a>
+        
+          <a href="https://twitter.com/PassionDani" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter">
+  <title>twitter</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+</svg>
+          </a>
+        
+          <a href="https://github.com/daniccan" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+          </a>
+        
+          <a href="https://stackoverflow.com/users/2764789/daniccan" target="_blank" rel="noreferrer noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-link">
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+</svg>
+          </a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Dictionary in Excel VBA</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jan 15, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>
+</svg>
+              <a class="tag" href="https://daniccan.github.io/tags/vba/">VBA</a>
+              <a class="tag" href="https://daniccan.github.io/tags/macro/">Macro</a>
+              <a class="tag" href="https://daniccan.github.io/tags/excel/">Excel</a>
+              <a class="tag" href="https://daniccan.github.io/tags/tutorial/">Tutorial</a>
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>I recently worked on a project which involved creating a macro in Microsoft Excel. Macros can be easily created without any programming knowledge by <a href="https://support.office.com/en-us/article/Quick-start-Create-a-macro-741130CA-080D-49F5-9471-1E5FB3D581A8">recording a macro</a>. However, recording macros do not help with advanced or customized use cases. VBA is used in such cases where you can <a href="https://www.excel-easy.com/vba/create-a-macro.html">code the macro</a> to suit your requirement.</p>
+<h2 id="vba-and-its-key-value-pair-data-structure">VBA and its Key-Value Pair Data Structure</h2>
+<p>Just like any other programming language, <a href="https://www.tutorialspoint.com/vba/index.htm">VBA</a> has its own syntax of variable declarations, data types, conditional and looping statements etc. But, I was not able to find a particular data structure in VBA, a data structure that deals with key-value pairs. <code>Java</code> has the <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map Interface</a>, <code>Python</code> has the <a href="https://docs.python.org/2/tutorial/datastructures.html#dictionaries">Dictionary</a>, <code>Ruby</code> has the <a href="https://ruby-doc.org/core-2.7.0/Hash.html">Hash</a> and so on. Why doesn&rsquo;t VBA have one by default?</p>
+<p>It turns out that VBA does have a key-value pair data structure called the <a href="https://docs.microsoft.com/en-us/office/vba/Language/Reference/User-Interface-Help/dictionary-object">Dictionary</a>. To use it in a project, it has to be enabled manually by adding an reference. The Dictionary in VBA contains <code>Keys</code> and <code>Items</code> as its values. The Keys and Items can be of any data type supported by VBA.</p>
+<h2 id="creating-a-dictionary">Creating a Dictionary</h2>
+<h3 id="early-binding">Early Binding</h3>
+<p>This type of Dictionary creation requires adding an reference before usage. This also enables auto-complete of code, which allows us to view the procedures and properties of the Dictionary in the editor.</p>
+<p>To add an reference,</p>
+<ul>
+<li>Select <code>Tools -&gt; References</code> from the Visual Basic Menu.</li>
+<li>Select <code>Microsoft Scripting Runtime</code> from the list of references and save.</li>
+</ul>
+<p>Now, the Dictionary can be initialized as follows</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb"><span style="color:#66d9ef">Dim</span> dict <span style="color:#f92672">As</span> Dictionary
+<span style="color:#66d9ef">Set</span> dict <span style="color:#f92672">=</span> <span style="color:#66d9ef">New</span> Dictionary
+</code></pre></div><h3 id="late-binding">Late Binding</h3>
+<p>This type of Dictionary creation does not require adding an reference before usage. This does not have the auto-complete feature.</p>
+<p>The Dictionary can be initialized as follows</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb"><span style="color:#66d9ef">Dim</span> dict <span style="color:#f92672">As</span> <span style="color:#66d9ef">Object</span>
+<span style="color:#66d9ef">Set</span> dict <span style="color:#f92672">=</span> CreateObject(<span style="color:#e6db74">&#34;Scripting.Dictionary&#34;</span>)
+</code></pre></div><h2 id="add-to-dictionary">Add to Dictionary</h2>
+<p>An entry can be added to the Dictionary as follows</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb">dict.Add Key, Item
+</code></pre></div><p><strong>Examples</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb">dict.Add <span style="color:#e6db74">&#34;Name&#34;</span>, <span style="color:#e6db74">&#34;John&#34;</span>
+dict.Add Key:<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Age&#34;</span>, Item:<span style="color:#f92672">=</span>25
+</code></pre></div><p>Just like other programming langugaes, duplicate Keys are not allowed in VBA Dictionary too. If a duplicate Key is added to the Dictionary, a Run-time error is thrown.</p>
+<h2 id="read-from-dictionary">Read from Dictionary</h2>
+<p>An Item can be read from the Dictionary using its Key as follows</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb">dict.Item(Key)
+</code></pre></div><p><strong>Examples</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb">dict.Item(<span style="color:#e6db74">&#34;Name&#34;</span>) <span style="color:#75715e">&#39;Returns &#34;John&#34;
+</span></code></pre></div><p>The list of Keys and Items can be read from the Dictionary as follows</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb">dict.Keys <span style="color:#75715e">&#39;Returns the list of Keys
+</span><span style="color:#75715e"></span>dict.Items <span style="color:#75715e">&#39;Returns the list of Items
+</span></code></pre></div><p>A Key can be checked for existence in the Dictionary as follows</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb">dict.Exists(Key) <span style="color:#75715e">&#39;Returns Boolean
+</span></code></pre></div><p><strong>Examples</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb">dict.Exists(<span style="color:#e6db74">&#34;Name&#34;</span>) <span style="color:#75715e">&#39;Returns true
+</span><span style="color:#75715e"></span>dict.Exists(<span style="color:#e6db74">&#34;Salary&#34;</span>) <span style="color:#75715e">&#39;Returns false
+</span></code></pre></div><h2 id="update-a-dictionary">Update a Dictionary</h2>
+<p>An Item can be updated in the Dictionary using its Key as follows</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb"><span style="color:#66d9ef">Set</span> dict.Item(Key) <span style="color:#f92672">=</span> Item
+</code></pre></div><p><strong>Examples</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb"><span style="color:#66d9ef">Set</span> dict.Item(<span style="color:#e6db74">&#34;Age&#34;</span>) <span style="color:#f92672">=</span> 26
+</code></pre></div><h2 id="remove-from-dictionary">Remove from Dictionary</h2>
+<p>Item(s) can be removed from the Dictionary as follows</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vb" data-lang="vb">dict.Remove(Key) <span style="color:#75715e">&#39;Remove entry based on Key
+</span><span style="color:#75715e"></span>dict.RemoveAll <span style="color:#75715e">&#39;Remove all entries
+</span></code></pre></div><h2 id="vba-dictionary-in-office-for-mac">VBA Dictionary in Office for Mac</h2>
+<p>When you are using <a href="https://products.office.com/en-US/mac/microsoft-office-for-mac">Office for Mac</a>, the VBA references list does not contain the <code>Microsoft Scripting Runtime</code> option. How else do you create a Dictionary with early binding?</p>
+<p>There are two open-source implementations of the Dictionary class that you can import into Excel for Mac.</p>
+<ul>
+<li><a href="http://www.sysmod.com/Dictionary.zip">Patrick O&rsquo;Beirne@sysmod&rsquo;s Implementation</a></li>
+<li><a href="https://github.com/VBA-tools/VBA-Dictionary">VBA-tools Implementation in GitHub</a></li>
+</ul>
+<p>Once imported, any of the above implementations prove to be a good replacement of Dictionary class provided by the <code>Microsoft Scripting Runtime</code> reference.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Data types that deal with collection of objects are important for any programming language. While collections such as Arrays or Lists are used to deal with multiple entries of single objects, key-value pair data structures are equally necessary to pair objects together and for lookups.</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

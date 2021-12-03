@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data on Daniccan Veerapandian</title>
+    <link>https://daniccan.github.io/tags/data/</link>
+    <description>Recent content in Data on Daniccan Veerapandian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Apr 2020 00:00:00 +0530</lastBuildDate><atom:link href="https://daniccan.github.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Big Data Architectures: An Introduction to Big Data</title>
+      <link>https://daniccan.github.io/posts/2020/an-introduction-to-big-data/</link>
+      <pubDate>Wed, 22 Apr 2020 00:00:00 +0530</pubDate>
+      
+      <guid>https://daniccan.github.io/posts/2020/an-introduction-to-big-data/</guid>
+      <description>Posts in the Big Data Architectures Series  An Introduction to Big Data  What is Big Data? Big Data is defined by Wikipedia as, &amp;ldquo;Data that usually includes data sets with sizes beyond the ability of commonly used software tools to capture, curate, manage, and process data within a tolerable elapsed time.&amp;rdquo; In simpler terms, huge amounts of data that cannot be handled using a traditional database system is called as big data.</description>
+    </item>
+    
+  </channel>
+</rss>
